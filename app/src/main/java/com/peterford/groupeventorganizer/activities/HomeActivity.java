@@ -33,12 +33,11 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         mHomeTabPageAdapter = new HomeTabPageAdapter(getSupportFragmentManager());
 
-        mHomeTabPageAdapter.addFragment( new HomeTabPageAdapter.HomeTab());
-        mHomeTabPageAdapter.addFragment( new HomeTabPageAdapter.HomeTab());
-        mHomeTabPageAdapter.addFragment( new HomeTabPageAdapter.HomeTab());
+        mHomeTabPageAdapter.addFragment( HomeTabPageAdapter.HomeTab.newInstance(HomeTabPageAdapter.HOME_TITLES.UPCOMING_EVENTS) );
+        mHomeTabPageAdapter.addFragment( HomeTabPageAdapter.HomeTab.newInstance(HomeTabPageAdapter.HOME_TITLES.ACTIVE_CHARGES));
+        mHomeTabPageAdapter.addFragment( HomeTabPageAdapter.HomeTab.newInstance(HomeTabPageAdapter.HOME_TITLES.CALENDAR));
 
         mViewPager.setAdapter(mHomeTabPageAdapter);
 
