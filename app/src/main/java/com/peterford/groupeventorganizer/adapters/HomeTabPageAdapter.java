@@ -1,6 +1,7 @@
 package com.peterford.groupeventorganizer.adapters;
 
 
+import android.net.wifi.aware.PublishConfig;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 public class HomeTabPageAdapter extends FragmentPagerAdapter{
 
     private static final String TAG = HomeTabPageAdapter.class.getSimpleName();
+
+    public static String TITLE = "TITLE";
 
     private ArrayList<Fragment> mFragments;
 

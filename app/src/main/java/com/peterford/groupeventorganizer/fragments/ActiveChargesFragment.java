@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.peterford.groupeventorganizer.R;
+import com.peterford.groupeventorganizer.adapters.HomeTabPageAdapter;
 
 /**
  * Created by Peter on 4/2/2018.
@@ -18,7 +19,7 @@ public class ActiveChargesFragment extends Fragment {
     public static ActiveChargesFragment newInstance(String title) {
         ActiveChargesFragment activeChargesFragment = new ActiveChargesFragment();
         Bundle args = new Bundle();
-        args.putString("TITLE", title);
+        args.putString(HomeTabPageAdapter.TITLE, title);
         activeChargesFragment.setArguments(args);
         return activeChargesFragment;
     }

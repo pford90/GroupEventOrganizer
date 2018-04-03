@@ -11,6 +11,8 @@ import com.peterford.groupeventorganizer.R;
 import com.peterford.groupeventorganizer.adapters.HomeTabPageAdapter;
 import com.peterford.groupeventorganizer.fragments.ActiveChargesFragment;
 import com.peterford.groupeventorganizer.fragments.CalendarFragment;
+import com.peterford.groupeventorganizer.fragments.FragmentManager;
+import com.peterford.groupeventorganizer.fragments.FragmentTypes;
 import com.peterford.groupeventorganizer.fragments.UpcomingEventsFragment;
 
 import butterknife.BindView;
@@ -37,9 +39,9 @@ public class HomeActivity extends AppCompatActivity {
 
         mHomeTabPageAdapter = new HomeTabPageAdapter(getSupportFragmentManager());
 
-        mHomeTabPageAdapter.addFragment(UpcomingEventsFragment.newInstance("UPCOMING EVENTS"));
-        mHomeTabPageAdapter.addFragment(ActiveChargesFragment.newInstance("ACTIVE CHARGES"));
-        mHomeTabPageAdapter.addFragment(CalendarFragment.newInstance("CALENDAR"));
+        mHomeTabPageAdapter.addFragment(FragmentManager.getFragment(FragmentTypes.UPCOMING_EVENTS));
+        mHomeTabPageAdapter.addFragment(FragmentManager.getFragment(FragmentTypes.ACTIVE_CHARGES));
+        mHomeTabPageAdapter.addFragment(FragmentManager.getFragment(FragmentTypes.CALENDAR));
 
         mViewPager.setAdapter(mHomeTabPageAdapter);
 

@@ -8,13 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.peterford.groupeventorganizer.R;
+import com.peterford.groupeventorganizer.adapters.HomeTabPageAdapter;
 
 public class UpcomingEventsFragment extends Fragment {
 
     public static UpcomingEventsFragment newInstance(String title) {
         UpcomingEventsFragment upcomingEventsFragment = new UpcomingEventsFragment();
         Bundle args = new Bundle();
-        args.putString("TITLE", title);
+        args.putString(HomeTabPageAdapter.TITLE, title);
         upcomingEventsFragment.setArguments(args);
         return upcomingEventsFragment;
     }
