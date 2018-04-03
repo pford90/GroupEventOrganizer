@@ -8,8 +8,10 @@ import android.support.v7.widget.Toolbar;
 
 
 import com.peterford.groupeventorganizer.R;
-import com.peterford.groupeventorganizer.api.responses.UserResponse;
-import com.peterford.groupeventorganizer.fragments.HomeTabPageAdapter;
+import com.peterford.groupeventorganizer.adapters.HomeTabPageAdapter;
+import com.peterford.groupeventorganizer.fragments.ActiveChargesFragment;
+import com.peterford.groupeventorganizer.fragments.CalendarFragment;
+import com.peterford.groupeventorganizer.fragments.UpcomingEventsFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,9 +37,9 @@ public class HomeActivity extends AppCompatActivity {
 
         mHomeTabPageAdapter = new HomeTabPageAdapter(getSupportFragmentManager());
 
-        mHomeTabPageAdapter.addFragment( HomeTabPageAdapter.HomeTab.newInstance(HomeTabPageAdapter.HOME_TITLES.UPCOMING_EVENTS) );
-        mHomeTabPageAdapter.addFragment( HomeTabPageAdapter.HomeTab.newInstance(HomeTabPageAdapter.HOME_TITLES.ACTIVE_CHARGES));
-        mHomeTabPageAdapter.addFragment( HomeTabPageAdapter.HomeTab.newInstance(HomeTabPageAdapter.HOME_TITLES.CALENDAR));
+        mHomeTabPageAdapter.addFragment(UpcomingEventsFragment.newInstance("UPCOMING EVENTS"));
+        mHomeTabPageAdapter.addFragment(ActiveChargesFragment.newInstance("ACTIVE CHARGES"));
+        mHomeTabPageAdapter.addFragment(CalendarFragment.newInstance("CALENDAR"));
 
         mViewPager.setAdapter(mHomeTabPageAdapter);
 
