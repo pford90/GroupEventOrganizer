@@ -1,11 +1,13 @@
 package com.peterford.groupeventorganizer.fragments;
 
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -42,8 +44,12 @@ public class UpcomingEventsFragment extends Fragment {
 
         ArrayList<Event> events = new ArrayList<>();
         Event event = new Event();
-        event.setTitle("TEST 1");
+        event.setTitle("TEST 2");
         events.add( event );
+
+        Event event2 = new Event();
+        event2.setTitle("TEST 2");
+        events.add(event2);
 
         mUpcomingEventsAdapter = new UpcomingEventsAdapter(getContext(), events);
         mRecyclerView.setAdapter(mUpcomingEventsAdapter);
