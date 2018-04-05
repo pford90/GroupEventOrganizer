@@ -5,4 +5,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_tab_title_key">TITLE</string>
+    <string name="add_event">Add Event</string>
+    <string name="calendar">Calendar</string>
+    <string name="reports">Reports</string>
 </resources>
