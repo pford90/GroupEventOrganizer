@@ -8,4 +8,6 @@
     <string name="add_event">Add Event</string>
     <string name="calendar">Calendar</string>
     <string name="reports">Reports</string>
+    <string name="event_label">Event Title (required)</string>
+    <string name="date_label">Date</string>
 </resources>

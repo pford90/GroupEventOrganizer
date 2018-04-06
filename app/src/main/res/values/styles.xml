@@ -5,7 +5,7 @@
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
 
-        <item name="android:windowBackground">@color/primary</item>
+<!--        <item name="android:windowBackground">@color/primary</item> -->
 
         <item name="colorControlNormal">@color/iron</item>
         <item name="colorControlActivated">@color/white</item>
@@ -14,5 +14,18 @@
 
         <item name="colorButtonNormal">@color/primary_darker</item>
         <item name="android:colorButtonNormal">@color/primary_darker</item>
+
+        <item name="android:datePickerStyle">@style/EventDatePicker</item>
+        <item name="android:dialogTheme">@style/MyDialogTheme</item>
     </style>
+
+    <style name="MyDialogTheme" parent="android:Theme.Material.Dialog">
+        <item name="android:datePickerStyle">@style/EventDatePicker</item>
+    </style>
+
+    <style name="EventDatePicker" parent="android:Widget.Material.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+        <item name="android:spinnersShown">true</item>
+    </style>
+
 </resources>

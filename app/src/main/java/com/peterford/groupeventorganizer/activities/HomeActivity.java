@@ -1,5 +1,8 @@
 package com.peterford.groupeventorganizer.activities;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -8,21 +11,19 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 
 import com.peterford.groupeventorganizer.R;
 import com.peterford.groupeventorganizer.adapters.HomeTabPageAdapter;
-import com.peterford.groupeventorganizer.fragments.ActiveChargesFragment;
-import com.peterford.groupeventorganizer.fragments.CalendarFragment;
 import com.peterford.groupeventorganizer.fragments.FragmentManager;
 import com.peterford.groupeventorganizer.fragments.FragmentTypes;
-import com.peterford.groupeventorganizer.fragments.UpcomingEventsFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private final String TAG = HomeActivity.class.getSimpleName();
 
@@ -30,8 +31,8 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.home_toolbar) Toolbar mToolbar;
     @BindView(R.id.home_tab_layout) TabLayout mTabLayout;
 
-    @BindView(R.id.home_nav_menu) DrawerLayout mDrawerLayout;
-
+    @BindView(R.id.home_nav_drawerLayout) DrawerLayout mDrawerLayout;
+    @BindView(R.id.home_nav_view) NavigationView mNavigationView;
     private HomeTabPageAdapter mHomeTabPageAdapter;
 
     @Override
@@ -45,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_nav);
 
-
+        mNavigationView.setNavigationItemSelectedListener(this);
 
 
         mHomeTabPageAdapter = new HomeTabPageAdapter(getSupportFragmentManager());
@@ -68,5 +69,15 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_add_event:
+                Intent intent = new Intent(getApplicationContext(), EventActivity.class);
+                startActivity(intent);
+        }
+        return true;
     }
 }

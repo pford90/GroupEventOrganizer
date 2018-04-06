@@ -9,6 +9,6 @@
 
         <item android:id="@+id/menu_reports" android:icon="@android:drawable/ic_menu_report_image" android:title="@string/reports" />
     </group>
-    
+
 
 </menu>
