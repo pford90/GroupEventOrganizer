@@ -10,4 +10,8 @@
     <string name="reports">Reports</string>
     <string name="event_label">Event Title (required)</string>
     <string name="date_label">Date</string>
+    <string name="time_label">Time</string>
+    <string name="description_label">Description</string>
+    <string name="event_description_hint">Please enter an Event description</string>
+    <string name="create_event_button">CREATE EVENT</string>
 </resources>

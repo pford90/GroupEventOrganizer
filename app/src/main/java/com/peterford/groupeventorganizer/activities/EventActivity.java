@@ -2,14 +2,19 @@ package com.peterford.groupeventorganizer.activities;
 
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import com.peterford.groupeventorganizer.R;
+import com.peterford.groupeventorganizer.domain.Event;
+import com.peterford.groupeventorganizer.utils.DateFormatString;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,12 +24,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class EventActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class EventActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private static final String TAG = EventActivity.class.getSimpleName();
 
     @BindView(R.id.input_event_date) Button mDatePick;
-//    @BindView(R.id.input_event_date) DatePicker mDatePicker;
+    @BindView(R.id.input_event_time) Button mTimePick;
 
 
     @Override
@@ -34,13 +39,13 @@ public class EventActivity extends AppCompatActivity implements DatePickerDialog
         ButterKnife.bind(this);
 
         updateDatePickText( new Date() );
+        Calendar calendar = Calendar.getInstance();
+        updateTimePickText( calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
     }
 
 
     @OnClick(R.id.input_event_date)
     public void showDatePickerDialog(View view) {
-//        DatePickerFragment dialogFragment = new DatePickerFragment();
-//        dialogFragment.show(getSupportFragmentManager(), "datePicker");
         Calendar calendar = Calendar.getInstance();
 
         int year = calendar.get(Calendar.YEAR);
@@ -50,11 +55,24 @@ public class EventActivity extends AppCompatActivity implements DatePickerDialog
         datePickerDialog.show();
     }
 
-    private String formatString(Date date) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM-dd, yyyy");
-        String result = dateFormat.format(date);
-        Log.v(TAG, result);
-        return result;
+    @OnClick(R.id.input_event_time)
+    public void showTimePickerDialog(View view) {
+        Calendar calendar = Calendar.getInstance();
+
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, this, hour, minute, true);
+        timePickerDialog.show();
+    }
+
+    private void updateTimePickText(int hour, int minute) {
+        mTimePick.setText(hour + ":" + minute);
+    }
+
+    public void updateDatePickText(Date date) {
+        String dateStr = DateFormatString.formatString(date, "EEEE, MMMM-dd, yyyy");
+        mDatePick.setText( dateStr );
     }
 
     @Override
@@ -64,21 +82,16 @@ public class EventActivity extends AppCompatActivity implements DatePickerDialog
         updateDatePickText(calendar.getTime());
     }
 
-    public void updateDatePickText(Date date) {
-        String dateStr = formatString( date );
-        Log.v(TAG, dateStr);
-        mDatePick.setText( dateStr );
+    @Override
+    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+        Log.v(TAG, "HOUR : " + i);
+        Log.v(TAG, "MINUTE : " + i1);
+        updateTimePickText(i, i1);
     }
 
-    @Override
-    protected void onPause() {
-        Log.v(TAG, "ON PAUSE");
-        super.onPause();
+    @OnClick(R.id.input_event_create)
+    public void createEvent(View view) {
+
     }
 
-    @Override
-    protected void onResume() {
-        Log.v(TAG, "ON RESUME");
-        super.onResume();
-    }
 }
